@@ -39,5 +39,8 @@ The set of variables that were estimated from these signals are (there were addi
 
 mean(): Mean value  
 std(): Standard deviation  
+activity_labels: Explain the activity the subject was performing during that observation.
+subject: subject # (observed subject)
+
 
 (*) Source: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones

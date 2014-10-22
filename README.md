@@ -61,14 +61,14 @@ train.subject$X1 -> train.data$subject
 
 ```
 
-##1 Merge and arrange test and train data by subject and store it in the temp merged_ds data frame:
+### 1 Merge and arrange test and train data by subject and store it in the temp merged_ds data frame:
 
 
 ```{r}
 merged_ds <- rbind(train.data, test.data, deparse.level = 1)
 ```
 
-##2 Obtain the columns with mean and std information and store them in the final_ds data frame:
+### 2 Obtain the columns with mean and std information and store them in the final_ds data frame:
 
 
 ```{r}
@@ -79,13 +79,13 @@ colnames(final_ds)[80:81] <- c("activity_numbers", "subject")
 ```
 
 
-##3 Add descriptive activity names (stored in activity_labels file) using merge():
+### 3 Add descriptive activity names (stored in activity_labels file) using merge():
 ```{r}
 activities_list <- read.csv("UCI HAR Dataset/activity_labels.txt", sep="", header=F)
 final_ds <- merge(final_ds, activities_list, by.x = "activity_numbers", by.y = "V1", sort=F)
 ```
 
-##4 Properly label data set with variable names, reorder columns and clear act numbers.
+### 4 Properly label data set with variable names, reorder columns and clear act numbers.
 
 ```{r}
 colnames(final_ds)[82] <- c("activity_labels")
@@ -103,7 +103,7 @@ avgs_ds <- summarise_each(avgs_ds,funs(mean), -activity_labels, -subject)
 ```
 
 
-###6 Write the final tidy data to a text file (in wd root, "SPhone_Tidy_Data.txt") :
+### 6 Write the final tidy data to a text file (in wd root, "SPhone_Tidy_Data.txt") :
 
 ```{r}
 write.table(x = avgs_ds, file = "SPhone_Tidy_Data.txt", append = F, row.names = FALSE)  
